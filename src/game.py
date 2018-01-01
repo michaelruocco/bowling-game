@@ -5,7 +5,15 @@ class Game:
         self.currentRoll = 0
 
     def calculate_score(self):
-        return sum(self.rolls)
+        score = 0
+        firstInFrame = 0
+        for frame in range(0, 10):
+            if (self.rolls[firstInFrame] + self.rolls[firstInFrame+1] == 10):
+                score += 10 + self.rolls[firstInFrame+2]
+            else:
+                score += self.rolls[firstInFrame] + self.rolls[firstInFrame+1]
+            firstInFrame += 2
+        return score
 
     def roll(self, pins):
         self.rolls[self.currentRoll] = pins

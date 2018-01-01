@@ -18,7 +18,7 @@ class GameTest(unittest.TestCase):
         self.roll_many(20, 1)
         self.assertEqual(self.game.calculate_score(), 20)
 
-    def ignore_spare_should_include_next_roll(self):
+    def test_spare_should_include_next_roll(self):
         self.game.roll(5)
         self.game.roll(5)
         self.game.roll(3)
