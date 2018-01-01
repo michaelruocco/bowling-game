@@ -18,6 +18,13 @@ class GameTest(unittest.TestCase):
         self.roll_many(20, 1)
         self.assertEqual(self.game.calculate_score(), 20)
 
+    def ignore_spare_should_include_next_roll(self):
+        self.game.roll(5)
+        self.game.roll(5)
+        self.game.roll(3)
+        self.roll_many(17, 0)
+        self.assertEqual(self.game.calculate_score(), 16)
+
     def roll_many(self, rolls, pins):
         for i in range(0, rolls):
             self.game.roll(pins)
