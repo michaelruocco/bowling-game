@@ -7,24 +7,24 @@ class GameTest(unittest.TestCase):
     def setUp(self):
         self.game = Game()
 
-    def test_game_should_have_initial_score_zero(self):
+    def test_initial_score_zero(self):
         self.assertEqual(self.game.calculate_score(), 0)
 
-    def test_gutter_game_should_score_zero(self):
+    def test_gutter_game(self):
         self.roll_many(20, 0)
         self.assertEqual(self.game.calculate_score(), 0)
 
-    def test_game_of_all_ones_should_score_twenty(self):
+    def test_all_ones(self):
         self.roll_many(20, 1)
         self.assertEqual(self.game.calculate_score(), 20)
 
-    def all_spares_should_score(self):
+    def test_one_spare(self):
         self.roll_spare()
         self.game.roll(3)
         self.roll_many(17, 0)
         self.assertEqual(self.game.calculate_score(), 16)
 
-    def test_strike_should_include_next_two_rolls(self):
+    def test_one_strike(self):
         self.game.roll(10)
         self.game.roll(3)
         self.game.roll(4)
